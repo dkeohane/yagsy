@@ -1,0 +1,11 @@
+auth:
+  jwt_secret: "superdupersecret"
+
+database:
+  host: "yagsy-postgres"
+  port: 5432
+  name: "yagsydb"
+  driver: "postgres"
+  user: "yagsy"
+  password: "yagsy"
+

@@ -1,0 +1,31 @@
+version: '3'
+services:
+  yagsy:
+    build: .
+    container_name: yagsy
+    environment:
+      - DB_SERVER=yagsy-postgres
+    ports:
+      - "8080:8080" # application
+      - "2345:2345" # debugging
+    security_opt:
+      - "seccomp:unconfined"
+    tty: true
+    depends_on:
+      - yagsy-postgres
+    command: sh -c "/wait && ./yagsy" # dlv debug /go/src/github.com/dkeohane/yagsy --headless --listen=:2345 --api-version=2 --log=true"
+    environment:
+      - WAIT_HOSTS=yagsy-postgres:5432
+      - WAIT_HOSTS_TIMEOUT=300
+      - WAIT_SLEEP_INTERVAL=5
+      - WAIT_HOST_CONNECT_TIMEOUT=30
+
+  yagsy-postgres:
+    image: "postgres:alpine"
+    container_name: yagsy-postgres
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_DB=yagsydb
+      - POSTGRES_USER=yagsy
+      - POSTGRES_PASSWORD=yagsy
