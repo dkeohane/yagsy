@@ -6,7 +6,7 @@ import (
 	"database/sql"
 	"github.com/dkeohane/yagsy/app/dbs"
 	"github.com/dkeohane/yagsy/app/handlers"
-	"github.com/dkeohane/yagsy/config"
+	"github.com/dkeohane/yagsy/app/utils/config"
 	"github.com/gorilla/mux"
 	_ "github.com/lib/pq"
 	"log"

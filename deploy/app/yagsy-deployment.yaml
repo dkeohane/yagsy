@@ -1,0 +1,36 @@
+apiVersion: apps/v1 
+kind: Deployment
+metadata:
+  name: yagsy
+  labels:
+    app: yagsy
+spec:
+  replicas: 1
+  selector:
+    matchLabels: 
+      app: yagsy
+  template:
+    metadata:
+      labels:
+        app: yagsy
+    spec:
+      containers:
+      - name: yagsy
+        command: ["/bin/sh"]
+        args: ["-c", "/wait && ./yagsy"]
+        image: dkeohane/yagsy:latest              # The image we are getting from dockerhub
+        imagePullPolicy: IfNotPresent
+        ports:
+          - name: http
+            containerPort: 8080
+        volumeMounts:
+          - name: postgres-secret
+            mountPath: /root/config
+      volumes:
+        - name: postgres-secret
+          projected:
+            sources:
+            - secret:
+                name: postgres-secret
+            - secret:
+                name: postgres-test-secret

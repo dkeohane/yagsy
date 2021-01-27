@@ -2,7 +2,7 @@ package postgres_test
 
 import (
 	"github.com/dkeohane/yagsy/app/dbs/postgres"
-	"github.com/dkeohane/yagsy/config"
+	"github.com/dkeohane/yagsy/app/utils/config"
 	"log"
 	"os"
 	"testing"

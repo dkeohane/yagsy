@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: yagsy-postgres
+  labels:
+    app: yagsy-postgres
+spec:
+  type: NodePort
+  ports:
+    - port: 5432
+  selector:
+    app: yagsy-postgres
+    tier: postgres
