@@ -1,5 +1,5 @@
 # Yagsy
-Yagsy is an Authentication REST Service created to learn some [Golang](https://golang.org/). 
+Yagsy is a RESTful Authentication Service created to learn some [Golang](https://golang.org/). 
 
 Yagsy uses:
 * [Gorilla MUX](https://github.com/gorilla/mux) for HTTP Routing.

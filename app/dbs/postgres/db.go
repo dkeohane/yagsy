@@ -3,7 +3,7 @@ package postgres
 import (
 	"database/sql"
 	"fmt"
-	"github.com/dkeohane/yagsy/config"
+	"github.com/dkeohane/yagsy/app/utils/config"
 	_ "github.com/lib/pq"
 )
 

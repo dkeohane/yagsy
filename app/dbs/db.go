@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	//"fmt"
 	"github.com/dkeohane/yagsy/app/dbs/postgres"
-	"github.com/dkeohane/yagsy/config"
+	"github.com/dkeohane/yagsy/app/utils/config"
 )
 
 // NewDB allows us to have more than one DB provider

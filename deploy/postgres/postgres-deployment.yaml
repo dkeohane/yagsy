@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: yagsy-postgres
+  labels:
+    app: yagsy-postgres
+spec:
+  selector:
+    matchLabels:
+      app: yagsy-postgres
+      tier: postgres
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: yagsy-postgres
+        tier: postgres
+    spec:
+      containers:
+        - image: postgres:alpine
+          name: yagsy-postgres
+          imagePullPolicy: "IfNotPresent"
+          envFrom:
+            - secretRef:
+                name: postgres-secret
+          ports:
+            - containerPort: 5432
+              name: postgres
+          volumeMounts:
+            - mountPath: /var/lib/postgresql/data
+              name: postgres-persistent-storage
+      volumes:
+        - name: postgres-persistent-storage
+          persistentVolumeClaim:
+            claimName: postgres-pv-claim
