@@ -19,7 +19,7 @@ test:
 	docker-compose -f docker-compose.test.yml down --volumes
 
 build:
-	docker build -t dkeohane/yagsy .
+	docker build -t dankeohane/yagsy .
 
 test-db-up:
 	docker-compose -f docker-compose.test.yml up --build db
