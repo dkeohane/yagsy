@@ -18,6 +18,9 @@ test:
 	docker-compose -f docker-compose.test.yml up --build --abort-on-container-exit
 	docker-compose -f docker-compose.test.yml down --volumes
 
+build:
+	docker build -t dkeohane/yagsy .
+
 test-db-up:
 	docker-compose -f docker-compose.test.yml up --build db
 

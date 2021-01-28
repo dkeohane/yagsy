@@ -1,0 +1,11 @@
+language: go
+  
+script:
+  - make test
+  - make build
+
+deploy: 
+  provider: script
+  script: bash .docker_push
+  true: 
+    branch: master
